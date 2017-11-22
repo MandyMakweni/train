@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script type="text/javascript">
+  function Train(info) {
+    this.number = info.number;
+    this.direction = info.direction;
+    this.departure_time = info.departure_time;
+    this.arrival_time = info.arrival_time;
+    this.stops = info.stops;
+    this.capacity = info.capacity;
+    this.passengers = info.passengers;
+    this.board = function(passengers) {
+    this.waiting_passengers.push( passengers);
+    }
+  }
+
+  let waiting_passengers = [{
+      id: 1,
+      name: 'Mish',
+      height: '6',
+      skin_colour: 'brown',
+      age: 25,
+      sex: 1
+    },
+    {
+      id: 2,
+      name: 'Beke',
+      height: '5.8',
+      skin_colour: 'brown',
+      age: 22,
+      sex: 0
+    },
+    {
+      id: 3,
+      name: 'Sipho',
+      height: '5.8',
+      skin_colour: 'brown',
+      age: 22,
+      sex: 1
+    },
+    {
+      id: 4,
+      name: 'Mandy',
+      height: '5.8',
+      skin_colour: 'brown',
+      age: 22,
+      sex: 0
+    },
+    {
+      id: 5,
+      name: 'Lloyd',
+      height: '5.8',
+      skin_colour: 'brown',
+      age: 22,
+      sex: 1
+    },
+  ];
+
+
+  let trains = [{
+      number: 1001,
+      direction: 'North',
+      departure_time: '08:00',
+      arrival_time: '09:20',
+      stops: 7,
+      capacity: 2,
+      passengers: [],
+      board: function(passengers) {
+        this.waiting_passengers.push(passenger);
+      }
+    },
+    {
+      number: 3005,
+      direction: 'South',
+      departure_time: '08:10',
+      arrival_time: '09:05',
+      stops: 5,
+      capacity: 2,
+      passengers: [],
+      board: function(passengers) {
+        this.waiting_passengers.push(passenger);
+      }
+
+    }
+  ];
+  //
+  //
+  // let southTrain = trains[1];
+  // let northTrain = trains[0]
+  // // let southTrain = new Train(data);
+
+// alert for train storage
+  for(let a = 0; a < trains.length; a ++ ){
+    let c = trains[a];
+    if(c.capacity <= 2){
+      console.log('reached max');
+
+    }
+  else{
+    alert('train is full');
+
+    }
+  }
+console.log(waiting_passengers);
+  //
+  // for (let i = 0; i < waiting_passengers.length; i++) {
+  //
+  //
+  //   let p = waiting_passengers[i];
+  //   if (p.sex) { // female
+  //     northTrain.board(p); //female
+  //   } else {
+  //     southTrain.board(p); //male
+  //   }
+  // }
+  //
+  // console.log(southTrain);
+  // console.log(northTrain);
+  // debugger;
+</script>
