@@ -1,0 +1,16 @@
+h1{
+  color: white;
+  text-align: center;
+  text-decoration: underline;
+  background-color:  black;
+  font-style: italic;
+}
+
+h2{
+  text-decoration: underline;
+}
+
+hr{
+  color: 2px solid black;
+  height: 4px;
+}

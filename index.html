@@ -5,195 +5,187 @@
    <title></title>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/style.css">
  </head>
  <body>
-   <h1 style="text-align: center;">PRASA TRAINS</h1>
-    <hr style="color:black; height : 3px;">
-    <table class="table table-striped table-grey">
 
-       <th scope="col">SouthTrain</th>
+    <h1>PRASA TRAIN</h1>
+    <hr>
 
-       <th scope="col">NorthTrain</th>
+      <div class="container" style="background-color:#DCDCDC;">
+          <div class="row">
+            <div class="col-sm-3">
+                <h2 class="display-7 text-center">Waiting List</h2>
+                <ul class="list-group text-center" >
+                  <li class="list-group-item " id="waiting"></li>
+                </ul>
+            </div>
+            <div class="col-sm-3" style="margin-left: 70px;">
+                <h2 class="display-7 text-center">South Train 3005</h2>
+                <ul class="list-group">
+                  <li class="list-group-item" id="south_train"></li>
+                  <br>
+                  <button type="button" class="btn btn-success">UnBoard</button>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <h2 class="display-7 text-center">North Train 1001</h2>
+                <ul class="list-group">
+                  <li class="list-group-item" id="north_train"></li>
+                               <br>
+                  <button type="button" class="btn btn-success">UnBoard</button>
 
-  <tbody>
-      <td id="passengers"></td>
+                </ul>
+            </div>
+          </div>
+      </div>
 
-      <td id="North_passengers"></td>
 
-  </tbody>
-</table>
+
+
  </body>
 
 <script type="text/javascript">
 
-var waiting_passengers = [
- {
-    id:1,
-    name: 'Mish',
-    height : 6,
-    skin_colour: 'brown',
-    age: 25,
-    sex : 1
- },
- {
-   id:2,
-   name: 'Beke',
-   height : 5.8,
-   skin_colour: 'brown',
-   age: 22,
-   sex : 0
- },
-
- {
-   id:3,
-   name: 'Mandy',
-   height : 5.8,
-   skin_colour: 'brown',
-   age: 22,
-   sex : 0
- },
- {
-   id:4,
-   name: 'Sipho',
-   height : 5.8,
-   skin_colour: 'brown',
-   age: 22,
-   sex : 1
- },
- {
-   id:5,
-   name: 'Xolani',
-   height : 5.8,
-   skin_colour: 'brown',
-   age: 22,
-   sex : 1
- },
-];
-
-function Passenger(passenger_data){
-        this.id = passenger_data.id;
-        this.name = passenger_data.name;
-        this.height = passenger_data.height;
-        this.skin_colour = passenger_data.skin_colour;
-        this.age = passenger_data.age;
-        this.sex = passenger_data.sex;
-}
-
-let trains = [
- {
-   number : 1001,
-   direction: 'North',
-   departure_time: '08:00',
-   arrival_time: '09:20',
-   stops: 7,
-   capacity: 2,
-   passengers : []
-  //  board: function(passengers) {
-  //    this.waiting_passengers.push(passenger);
-  //  }
- },
- {
-   number : 3005,
-   direction: 'South',
-   departure_time: '08:10',
-   arrival_time: '09:05',
-   stops: 5,
-   capacity:3,
-   passengers : []
-  //  board: function(passengers) {
-  //    this.waiting_passengers.push(passenger);
-  //  }
- }
-];
-
-function Train(train_info){
-        this.number = train_info.number;
-        this.direction = train_info.direction;
-        this.departure_time = train_info.departure_time;
-        this.arrival_time = train_info.arrival_time;
-        this.stops = train_info.stops;
-        this.capacity = train_info.capacity;
-        this.passengers = train_info.passengers;
-        this.board = function(passenger){
-            var passengers_on_train = this.passengers.length ;
-            if ( passengers_on_train >= this.capacity ){
-                console.log('Train is full');
-            }
-            else {
-                this.passengers.push(passenger);
-                for (let index = 0 ; index < waiting_passengers.length ; index++){
-                    if ( waiting_passengers[index].id === passenger.id ){
-                        waiting_passengers.splice(index , 1);
-                    }
-                }
-            }
-        }
-}
-let southTrain_data = trains[1];
-let northTrain_data = trains[0];
-
-let southTrain = new Train(southTrain_data);
-let northTrain = new Train(northTrain_data);
-
-let Mish_data = waiting_passengers[0];
-let Beke_data = waiting_passengers[1];
-let Mandy_data = waiting_passengers[2];
-let Sipho_data = waiting_passengers[3];
-let Xolani_data = waiting_passengers[4];
-
-
-const Mish = new Passenger(Mish_data);
-const Beke = new Passenger(Beke_data);
-const Mandy = new Passenger(Mandy_data);
-const Sipho = new Passenger(Sipho_data);
-const Xolani = new Passenger(Xolani_data);
-
-
-
-
-//south train males
-southTrain.board(Mish);
-southTrain.board(Sipho);
-southTrain.board(Xolani);
-
-//north train females
-
-northTrain.board(Beke);
-northTrain.board(Mandy);
-
-
-
- $(document).ready(function(){
-    $('#train-number').prepend('<p>'+southTrain.number+'</p>');
-    for (let index = 0 ; index < southTrain.passengers.length ; index++){
-          $('#passengers').prepend('<p>'+southTrain.passengers[index].name+'</p>');
-    }
-});
-
 $(document).ready(function(){
-   $('#train-number').prepend('<p>'+northTrain.number+'</p>');
-   for (let index = 0 ; index < northTrain.passengers.length ; index++){
-         $('#North_passengers').prepend('<p>'+northTrain.passengers[index].name+'</p>');
+  let waiting_passengers = [
+   {
+      id:1,
+      name: 'Mish',
+      height : 6,
+      skin_colour: 'brown',
+      age: 25,
+      sex : 1
+   },
+   {
+     id:2,
+     name: 'Becky',
+     height : 5.8,
+     skin_colour: 'brown',
+     age: 22,
+     sex : 0
+   },
+
+   {
+     id:3,
+     name: 'Mandy',
+     height : 5.8,
+     skin_colour: 'brown',
+     age: 22,
+     sex : 0
+   },
+
+   {
+     id:4,
+     name: 'Sipho',
+     height : 5.8,
+     skin_colour: 'brown',
+     age: 22,
+     sex : 1
+   },
+
+   {
+     id:5,
+     name: 'Njabulo',
+     height : 5.8,
+     skin_colour: 'brown',
+     age: 22,
+     sex : 1
+   },
+
+{
+  id:6,
+  name: 'Xolani',
+  height : 5.8,
+  skin_colour: 'b',
+  age: 22,
+  sex : 1
+},
+
+{
+  id:7,
+  name: 'Greg',
+  height : 5.8,
+  skin_colour: 'white',
+  age: 32,
+  sex : 1
+},
+];
+
+  let trains = [
+   {
+     number : 1001,
+     direction: 'North',
+     departure_time: '08:00',
+     arrival_time: '09:20',
+     stops: 7,
+     capacity: 4,
+     passengers : []
+   },
+   {
+     number : 3005,
+     direction: 'South',
+     departure_time: '08:10',
+     arrival_time: '09:05',
+     stops: 5,
+     capacity:2,
+     passengers : []
    }
+  ];
+  function Train(train_info){
+
+          this.number = train_info.number;
+          this.direction = train_info.direction;
+          this.departure_time = train_info.departure_time;
+          this.arrival_time = train_info.arrival_time;
+          this.stops = train_info.stops;
+          this.capacity = train_info.capacity;
+          this.passengers = train_info.passengers;
+          this.board = function(passenger){
+              var passengers_on_train = this.passengers.length ;
+              if ( passengers_on_train >= this.capacity ){
+                    alert('Train is full!!');
+                    return false;
+              }
+              else {
+                  this.passengers.push(passenger);
+                  return true;
+              }
+          }
+    }
+
+  let southTrain_data = trains[1]; //females
+  let northTrain_data = trains[0];// north
+  let southTrain = new Train(southTrain_data);
+  let northTrain = new Train(northTrain_data);
+
+let final_passengers = [];
+for(let passenger of waiting_passengers){
+  //add passengers
+  $('#waiting').prepend('<div><br>'+passenger.name+'<br> <button class="btn btn-info " data-passenger-sex="'+passenger.sex+'" data-passenger-id="'+passenger.id+'">Board</button></div>');
+}
+
+//buton func
+$('.btn-info').on('click', function(){
+      let clicked_button = $(this);
+      clicked_button.parent().hide('slow');
+      let passenger_sex = $(this).data('passenger-sex');
+      let passenger_id = $(this).data('passenger-id');
+      let passenger = waiting_passengers.find(function (obj) { return obj.id === passenger_id; });
+      if ( passenger_sex == true ){
+          if ( northTrain.board(passenger) == true ){
+              $('#north_train').prepend('<br>'+passenger.name);
+          }
+      }
+      else {
+          if ( southTrain.board(passenger) == true ){
+            $('#south_train').prepend('<br>'+passenger.name);
+          }
+      }
+
+});
 });
 
 
-//sex
-
-
-// for (let i = 0; i < waiting_passengers.length; i++) {
-//
-//
-//   let p = waiting_passengers[i];
-//   if (p.sex) { // female
-//     northTrain.board(p); //female
-//   } else {
-//     southTrain.board(p); //male
-//   }
-// }
-//
-// console.log(southTrain);
-// console.log(northTrain);
-debugger;
 </script>
 </html>
