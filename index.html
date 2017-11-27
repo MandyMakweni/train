@@ -10,6 +10,7 @@
  <body>
 
     <h1>PRASA TRAIN</h1>
+
     <hr>
 
       <div class="container" style="background-color:#DCDCDC;">
@@ -25,15 +26,17 @@
                 <ul class="list-group">
                   <li class="list-group-item" id="south_train"></li>
                   <br>
+                  <br>
+                  <br>
                   <button type="button" class="btn btn-success">UnBoard</button>
+
                 </ul>
             </div>
+
             <div class="col-sm-3">
                 <h2 class="display-7 text-center">North Train 1001</h2>
                 <ul class="list-group">
                   <li class="list-group-item" id="north_train"></li>
-                               <br>
-                  <button type="button" class="btn btn-success">UnBoard</button>
 
                 </ul>
             </div>
@@ -42,12 +45,12 @@
 
 
 
-
  </body>
 
 <script type="text/javascript">
 
 $(document).ready(function(){
+
   let waiting_passengers = [
    {
       id:1,
@@ -183,9 +186,16 @@ $('.btn-info').on('click', function(){
           }
       }
 
+
 });
 });
 
+// unboard func
+$('.btn-success').on('click', function(){
+  $('#south_train').prependTo('#waiting');
+  $('#north_train').prependTo('#waiting');
+
+});
 
 </script>
 </html>
